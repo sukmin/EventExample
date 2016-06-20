@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width"/>
+  <title>User join</title>
+</head>
+<body>
+<form>
+    <span>ID : </span><input type="text" id="input_user_id" placeholder="ex) abcdedf"/>
+    <br/>
+    <span>휴대폰번호 : </span><input type="tel" id="input_user_phone_number" placeholder="ex) 01012345678"/>
+    <br/>
+    <a href="#" id="a_user_join_trigger">가입하기</a>
+</form>
+<script type="text/javascript" src="/js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#a_user_join_trigger").click(function(e){
+		
+		e.preventDefault();
+		
+		$.ajax({
+			
+			url : "/user",
+			type : "post",
+			cache : false,
+			data : {
+				"id" : $("#nput_user_id").val(),
+				"phoneNumber" : $("#input_user_phone_number").val()
+			},
+			success: function(r){
+				alert(r);
+			}
+			
+		});
+		
+	});
+	
+});
+
+</script>
+</body>
+</html>
